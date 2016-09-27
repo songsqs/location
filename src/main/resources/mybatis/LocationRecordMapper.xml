@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mobile.location.server.dal.dao.LocationRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.mobile.location.server.bean.entry.LocationRecord" >
+    <id column="location_record_id" property="locationRecordId" jdbcType="INTEGER" />
+    <result column="user_info_id" property="userInfoId" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="VARCHAR" />
+    <result column="dimension" property="dimension" jdbcType="VARCHAR" />
+    <result column="lac" property="lac" jdbcType="VARCHAR" />
+    <result column="cid" property="cid" jdbcType="VARCHAR" />
+    <result column="bssid" property="bssid" jdbcType="VARCHAR" />
+    <result column="phone_type" property="phoneType" jdbcType="VARCHAR" />
+    <result column="network_type" property="networkType" jdbcType="VARCHAR" />
+    <result column="payment" property="payment" jdbcType="BIT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    location_record_id, user_info_id, longitude, dimension, lac, cid, bssid, phone_type, 
+    network_type, payment, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from location_record
+    where location_record_id = #{locationRecordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from location_record
+    where location_record_id = #{locationRecordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mobile.location.server.bean.entry.LocationRecord" useGeneratedKeys="true" keyProperty="locationRecordId" >
+    insert into location_record (user_info_id, longitude, dimension, 
+      lac, cid, bssid, phone_type, 
+      network_type, payment, create_time, 
+      update_time)
+    values (#{userInfoId,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{dimension,jdbcType=VARCHAR}, 
+      #{lac,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, #{bssid,jdbcType=VARCHAR}, #{phoneType,jdbcType=VARCHAR}, 
+      #{networkType,jdbcType=VARCHAR}, #{payment,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mobile.location.server.bean.entry.LocationRecord" useGeneratedKeys="true" keyProperty="locationRecordId" >
+    insert into location_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userInfoId != null" >
+        user_info_id,
+      </if>
+      <if test="longitude != null" >
+        longitude,
+      </if>
+      <if test="dimension != null" >
+        dimension,
+      </if>
+      <if test="lac != null" >
+        lac,
+      </if>
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="bssid != null" >
+        bssid,
+      </if>
+      <if test="phoneType != null" >
+        phone_type,
+      </if>
+      <if test="networkType != null" >
+        network_type,
+      </if>
+      <if test="payment != null" >
+        payment,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userInfoId != null" >
+        #{userInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="dimension != null" >
+        #{dimension,jdbcType=VARCHAR},
+      </if>
+      <if test="lac != null" >
+        #{lac,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null" >
+        #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="bssid != null" >
+        #{bssid,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneType != null" >
+        #{phoneType,jdbcType=VARCHAR},
+      </if>
+      <if test="networkType != null" >
+        #{networkType,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null" >
+        #{payment,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mobile.location.server.bean.entry.LocationRecord" >
+    update location_record
+    <set >
+      <if test="userInfoId != null" >
+        user_info_id = #{userInfoId,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null" >
+        longitude = #{longitude,jdbcType=VARCHAR},
+      </if>
+      <if test="dimension != null" >
+        dimension = #{dimension,jdbcType=VARCHAR},
+      </if>
+      <if test="lac != null" >
+        lac = #{lac,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null" >
+        cid = #{cid,jdbcType=VARCHAR},
+      </if>
+      <if test="bssid != null" >
+        bssid = #{bssid,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneType != null" >
+        phone_type = #{phoneType,jdbcType=VARCHAR},
+      </if>
+      <if test="networkType != null" >
+        network_type = #{networkType,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null" >
+        payment = #{payment,jdbcType=BIT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where location_record_id = #{locationRecordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mobile.location.server.bean.entry.LocationRecord" >
+    update location_record
+    set user_info_id = #{userInfoId,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=VARCHAR},
+      dimension = #{dimension,jdbcType=VARCHAR},
+      lac = #{lac,jdbcType=VARCHAR},
+      cid = #{cid,jdbcType=VARCHAR},
+      bssid = #{bssid,jdbcType=VARCHAR},
+      phone_type = #{phoneType,jdbcType=VARCHAR},
+      network_type = #{networkType,jdbcType=VARCHAR},
+      payment = #{payment,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where location_record_id = #{locationRecordId,jdbcType=INTEGER}
+  </update>
+</mapper>
