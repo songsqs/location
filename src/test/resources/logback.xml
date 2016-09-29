@@ -9,7 +9,7 @@
 <!-- -->
 <configuration>
     <property name="app.logs.path" value="${user.home}/logs" />
-    <property name="app.name" value="uc_demo" />
+    <property name="app.name" value="location" />
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
