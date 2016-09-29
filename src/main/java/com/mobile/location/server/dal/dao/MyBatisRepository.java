@@ -6,10 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 标识MyBatis的DAO,方便
- * {@link org.mybatis.spring.mapper.MapperScannerConfigurer}的扫描。
- * MyBatisRespository 
- * @author yangxinyan
+ * 标识MyBatis的DAO,方便 {@link org.mybatis.spring.mapper.MapperScannerConfigurer}
+ * 的扫描。 MyBatisRespository
+ * 
+ * @author songqingshan
  * @date 2015年11月23日 下午4:56:00
  *
  */
