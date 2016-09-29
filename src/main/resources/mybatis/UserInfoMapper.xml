@@ -4,18 +4,22 @@
   <resultMap id="BaseResultMap" type="com.mobile.location.server.bean.entry.UserInfo" >
     <id column="user_info_id" property="userInfoId" jdbcType="VARCHAR" />
     <result column="gender" property="gender" jdbcType="VARCHAR" />
+    <result column="is_local" property="isLocal" jdbcType="VARCHAR" />
+    <result column="profession" property="profession" jdbcType="VARCHAR" />
+    <result column="purpose" property="purpose" jdbcType="VARCHAR" />
     <result column="age_group" property="ageGroup" jdbcType="VARCHAR" />
+    <result column="peer_num" property="peerNum" jdbcType="INTEGER" />
+    <result column="companion" property="companion" jdbcType="VARCHAR" />
+    <result column="income" property="income" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
     <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
-    <result column="lodging" property="lodging" jdbcType="VARCHAR" />
-    <result column="occupation" property="occupation" jdbcType="VARCHAR" />
-    <result column="purpose" property="purpose" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    user_info_id, gender, age_group, start_time, end_time, lodging, occupation, purpose, 
-    create_time, update_time
+    user_info_id, gender, is_local, profession, purpose, age_group, peer_num, companion, 
+    income, province, start_time, end_time, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
@@ -28,14 +32,16 @@
     where user_info_id = #{userInfoId,jdbcType=VARCHAR}
   </delete>
   <insert id="insert" parameterType="com.mobile.location.server.bean.entry.UserInfo" >
-    insert into user_info (user_info_id, gender, age_group, 
-      start_time, end_time, lodging, 
-      occupation, purpose, create_time, 
-      update_time)
-    values (#{userInfoId,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{ageGroup,jdbcType=VARCHAR}, 
-      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{lodging,jdbcType=VARCHAR}, 
-      #{occupation,jdbcType=VARCHAR}, #{purpose,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+    insert into user_info (user_info_id, gender, is_local, 
+      profession, purpose, age_group, 
+      peer_num, companion, income, 
+      province, start_time, end_time, 
+      create_time, update_time)
+    values (#{userInfoId,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{isLocal,jdbcType=VARCHAR}, 
+      #{profession,jdbcType=VARCHAR}, #{purpose,jdbcType=VARCHAR}, #{ageGroup,jdbcType=VARCHAR}, 
+      #{peerNum,jdbcType=INTEGER}, #{companion,jdbcType=VARCHAR}, #{income,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.mobile.location.server.bean.entry.UserInfo" >
     insert into user_info
@@ -46,23 +52,35 @@
       <if test="gender != null" >
         gender,
       </if>
+      <if test="isLocal != null" >
+        is_local,
+      </if>
+      <if test="profession != null" >
+        profession,
+      </if>
+      <if test="purpose != null" >
+        purpose,
+      </if>
       <if test="ageGroup != null" >
         age_group,
+      </if>
+      <if test="peerNum != null" >
+        peer_num,
+      </if>
+      <if test="companion != null" >
+        companion,
+      </if>
+      <if test="income != null" >
+        income,
+      </if>
+      <if test="province != null" >
+        province,
       </if>
       <if test="startTime != null" >
         start_time,
       </if>
       <if test="endTime != null" >
         end_time,
-      </if>
-      <if test="lodging != null" >
-        lodging,
-      </if>
-      <if test="occupation != null" >
-        occupation,
-      </if>
-      <if test="purpose != null" >
-        purpose,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -78,23 +96,35 @@
       <if test="gender != null" >
         #{gender,jdbcType=VARCHAR},
       </if>
+      <if test="isLocal != null" >
+        #{isLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="purpose != null" >
+        #{purpose,jdbcType=VARCHAR},
+      </if>
       <if test="ageGroup != null" >
         #{ageGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="peerNum != null" >
+        #{peerNum,jdbcType=INTEGER},
+      </if>
+      <if test="companion != null" >
+        #{companion,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null" >
+        #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
       </if>
       <if test="startTime != null" >
         #{startTime,jdbcType=TIMESTAMP},
       </if>
       <if test="endTime != null" >
         #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lodging != null" >
-        #{lodging,jdbcType=VARCHAR},
-      </if>
-      <if test="occupation != null" >
-        #{occupation,jdbcType=VARCHAR},
-      </if>
-      <if test="purpose != null" >
-        #{purpose,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
@@ -110,23 +140,35 @@
       <if test="gender != null" >
         gender = #{gender,jdbcType=VARCHAR},
       </if>
+      <if test="isLocal != null" >
+        is_local = #{isLocal,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null" >
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="purpose != null" >
+        purpose = #{purpose,jdbcType=VARCHAR},
+      </if>
       <if test="ageGroup != null" >
         age_group = #{ageGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="peerNum != null" >
+        peer_num = #{peerNum,jdbcType=INTEGER},
+      </if>
+      <if test="companion != null" >
+        companion = #{companion,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null" >
+        income = #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
       </if>
       <if test="startTime != null" >
         start_time = #{startTime,jdbcType=TIMESTAMP},
       </if>
       <if test="endTime != null" >
         end_time = #{endTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lodging != null" >
-        lodging = #{lodging,jdbcType=VARCHAR},
-      </if>
-      <if test="occupation != null" >
-        occupation = #{occupation,jdbcType=VARCHAR},
-      </if>
-      <if test="purpose != null" >
-        purpose = #{purpose,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -140,12 +182,16 @@
   <update id="updateByPrimaryKey" parameterType="com.mobile.location.server.bean.entry.UserInfo" >
     update user_info
     set gender = #{gender,jdbcType=VARCHAR},
+      is_local = #{isLocal,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      purpose = #{purpose,jdbcType=VARCHAR},
       age_group = #{ageGroup,jdbcType=VARCHAR},
+      peer_num = #{peerNum,jdbcType=INTEGER},
+      companion = #{companion,jdbcType=VARCHAR},
+      income = #{income,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=TIMESTAMP},
       end_time = #{endTime,jdbcType=TIMESTAMP},
-      lodging = #{lodging,jdbcType=VARCHAR},
-      occupation = #{occupation,jdbcType=VARCHAR},
-      purpose = #{purpose,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where user_info_id = #{userInfoId,jdbcType=VARCHAR}

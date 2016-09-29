@@ -5,7 +5,7 @@
     <id column="location_record_id" property="locationRecordId" jdbcType="INTEGER" />
     <result column="user_info_id" property="userInfoId" jdbcType="VARCHAR" />
     <result column="longitude" property="longitude" jdbcType="VARCHAR" />
-    <result column="dimension" property="dimension" jdbcType="VARCHAR" />
+    <result column="latitude" property="latitude" jdbcType="VARCHAR" />
     <result column="lac" property="lac" jdbcType="VARCHAR" />
     <result column="cid" property="cid" jdbcType="VARCHAR" />
     <result column="bssid" property="bssid" jdbcType="VARCHAR" />
@@ -16,7 +16,7 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    location_record_id, user_info_id, longitude, dimension, lac, cid, bssid, phone_type, 
+    location_record_id, user_info_id, longitude, latitude, lac, cid, bssid, phone_type, 
     network_type, payment, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -30,11 +30,11 @@
     where location_record_id = #{locationRecordId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.mobile.location.server.bean.entry.LocationRecord" useGeneratedKeys="true" keyProperty="locationRecordId" >
-    insert into location_record (user_info_id, longitude, dimension, 
+    insert into location_record (user_info_id, longitude, latitude, 
       lac, cid, bssid, phone_type, 
       network_type, payment, create_time, 
       update_time)
-    values (#{userInfoId,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{dimension,jdbcType=VARCHAR}, 
+    values (#{userInfoId,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR}, 
       #{lac,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}, #{bssid,jdbcType=VARCHAR}, #{phoneType,jdbcType=VARCHAR}, 
       #{networkType,jdbcType=VARCHAR}, #{payment,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
@@ -48,8 +48,8 @@
       <if test="longitude != null" >
         longitude,
       </if>
-      <if test="dimension != null" >
-        dimension,
+      <if test="latitude != null" >
+        latitude,
       </if>
       <if test="lac != null" >
         lac,
@@ -83,8 +83,8 @@
       <if test="longitude != null" >
         #{longitude,jdbcType=VARCHAR},
       </if>
-      <if test="dimension != null" >
-        #{dimension,jdbcType=VARCHAR},
+      <if test="latitude != null" >
+        #{latitude,jdbcType=VARCHAR},
       </if>
       <if test="lac != null" >
         #{lac,jdbcType=VARCHAR},
@@ -121,8 +121,8 @@
       <if test="longitude != null" >
         longitude = #{longitude,jdbcType=VARCHAR},
       </if>
-      <if test="dimension != null" >
-        dimension = #{dimension,jdbcType=VARCHAR},
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=VARCHAR},
       </if>
       <if test="lac != null" >
         lac = #{lac,jdbcType=VARCHAR},
@@ -155,7 +155,7 @@
     update location_record
     set user_info_id = #{userInfoId,jdbcType=VARCHAR},
       longitude = #{longitude,jdbcType=VARCHAR},
-      dimension = #{dimension,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=VARCHAR},
       lac = #{lac,jdbcType=VARCHAR},
       cid = #{cid,jdbcType=VARCHAR},
       bssid = #{bssid,jdbcType=VARCHAR},

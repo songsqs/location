@@ -7,17 +7,25 @@ public class UserInfo {
 
     private String gender;
 
+    private String isLocal;
+
+    private String profession;
+
+    private String purpose;
+
     private String ageGroup;
+
+    private Integer peerNum;
+
+    private String companion;
+
+    private String income;
+
+    private String province;
 
     private Date startTime;
 
     private Date endTime;
-
-    private String lodging;
-
-    private String occupation;
-
-    private String purpose;
 
     private Date createTime;
 
@@ -39,12 +47,68 @@ public class UserInfo {
         this.gender = gender;
     }
 
+    public String getIsLocal() {
+        return isLocal;
+    }
+
+    public void setIsLocal(String isLocal) {
+        this.isLocal = isLocal;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        this.purpose = purpose;
+    }
+
     public String getAgeGroup() {
         return ageGroup;
     }
 
     public void setAgeGroup(String ageGroup) {
         this.ageGroup = ageGroup;
+    }
+
+    public Integer getPeerNum() {
+        return peerNum;
+    }
+
+    public void setPeerNum(Integer peerNum) {
+        this.peerNum = peerNum;
+    }
+
+    public String getCompanion() {
+        return companion;
+    }
+
+    public void setCompanion(String companion) {
+        this.companion = companion;
+    }
+
+    public String getIncome() {
+        return income;
+    }
+
+    public void setIncome(String income) {
+        this.income = income;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public Date getStartTime() {
@@ -61,30 +125,6 @@ public class UserInfo {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
-    }
-
-    public String getLodging() {
-        return lodging;
-    }
-
-    public void setLodging(String lodging) {
-        this.lodging = lodging;
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
-
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
-
-    public String getPurpose() {
-        return purpose;
-    }
-
-    public void setPurpose(String purpose) {
-        this.purpose = purpose;
     }
 
     public Date getCreateTime() {

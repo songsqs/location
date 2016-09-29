@@ -9,7 +9,7 @@ public class LocationRecord {
 
     private String longitude;
 
-    private String dimension;
+    private String latitude;
 
     private String lac;
 
@@ -51,12 +51,12 @@ public class LocationRecord {
         this.longitude = longitude;
     }
 
-    public String getDimension() {
-        return dimension;
+	public String getLatitude() {
+        return latitude;
     }
 
-    public void setDimension(String dimension) {
-        this.dimension = dimension;
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
     }
 
     public String getLac() {

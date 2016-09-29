@@ -2,6 +2,7 @@ package com.mobile.location.server.dal.dao;
 
 import com.mobile.location.server.bean.entry.UserInfo;
 
+@MyBatisRepository
 public interface UserInfoMapper {
     int deleteByPrimaryKey(String userInfoId);
 
