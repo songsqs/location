@@ -45,7 +45,8 @@ public class ProjectExceptionInterceptor {
 		result.setCode(e.getErrorCode());
 		result.setMsg(e.getErrorMsg());
 		logger.error(request.getRequestURI() + LOG_SPLIT + RequestUtil.getIp(request) + LOG_SPLIT+ RES_STATUS.isSuccess(result.getCode()) + 
-				result.getCode() + "-" + LOG_SPLIT + JSONObject.toJSONString(RequestUtil.getHttpParamter(request)));
+ result.getCode() + "-" + LOG_SPLIT
+				+ JSONObject.toJSONString(RequestUtil.getHttpParamter(request)) + LOG_SPLIT + e.getMessage());
 		return result;
 	}
 

@@ -324,10 +324,10 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<jdbc.url>jdbc:mysql://10.255.33.87:3306/test</jdbc.url>
-				<jdbc.user>sales</jdbc.user>
-				<jdbc.password>qwe123!@#</jdbc.password>
-				<sync.data.queue>queue.test.cif</sync.data.queue>
+				<jdbc.url>jdbc:mysql://localhost:3306/location</jdbc.url>
+				<jdbc.user>root</jdbc.user>
+				<jdbc.password>root</jdbc.password>
+				<sync.data.queue>queue.test.test</sync.data.queue>
 				<sync.data.brokerURL>failover:(tcp://127.0.0.1:61616)</sync.data.brokerURL>
 			</properties>
 		</profile>
@@ -349,7 +349,7 @@
 				<jdbc.url>jdbc:mysql://127.0.0.1:3306/test</jdbc.url>
 				<jdbc.user>root</jdbc.user>
 				<jdbc.password>123456</jdbc.password>
-				<sync.data.queue>queue.test.cif</sync.data.queue>
+				<sync.data.queue>queue.test.test</sync.data.queue>
 				<sync.data.brokerURL>failover:(tcp://127.0.0.1:61616)</sync.data.brokerURL>
 			</properties>
 		</profile>

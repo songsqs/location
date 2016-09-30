@@ -4,6 +4,8 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.mobile.location.server.common.util.checker.IgnoreNull;
+
 public class UserInfo {
     private String userInfoId;
 
@@ -31,8 +33,10 @@ public class UserInfo {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endTime;
 
+	@IgnoreNull
     private Date createTime;
 
+	@IgnoreNull
     private Date updateTime;
 
     public String getUserInfoId() {
@@ -146,4 +150,13 @@ public class UserInfo {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+	@Override
+	public String toString() {
+		return "UserInfo [userInfoId=" + userInfoId + ", gender=" + gender + ", isLocal=" + isLocal + ", profession="
+				+ profession + ", purpose=" + purpose + ", ageGroup=" + ageGroup + ", peerNum=" + peerNum
+				+ ", companion=" + companion + ", income=" + income + ", province=" + province + ", startTime="
+				+ startTime + ", endTime=" + endTime + ", createTime=" + createTime + ", updateTime=" + updateTime
+				+ "]";
+	}
 }
