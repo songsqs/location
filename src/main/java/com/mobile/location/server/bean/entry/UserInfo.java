@@ -2,6 +2,8 @@ package com.mobile.location.server.bean.entry;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class UserInfo {
     private String userInfoId;
 
@@ -23,8 +25,10 @@ public class UserInfo {
 
     private String province;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startTime;
 
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date endTime;
 
     private Date createTime;
