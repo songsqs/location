@@ -29,4 +29,15 @@ public class UserInfoManager {
 		}
 	}
 
+	public UserInfo selectUserInfoByUserInfoId(String userInfoId) {
+		try {
+			UserInfo result = userInfoMapper.selectUserInfoByUserInfoId(userInfoId);
+			logger.info("selectUserInfoByUserInfoId,userInfoId:" + userInfoId + ",result:" + result);
+			return result;
+		} catch (Exception e) {
+			logger.error("error when selectUserInfoByUserInfoId", e);
+			throw new ProjectException(RES_STATUS.SERVER_UNKONW_ERROR);
+		}
+	}
+
 }

@@ -14,6 +14,8 @@ public enum RES_STATUS {
 
     BAD_PARAM(400, "bad param"),
 
+	USER_INFO_NOT_EXIT(100001, "用户不存在"),
+
     ;
 
     RES_STATUS(int code, String msg) {

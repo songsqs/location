@@ -2,7 +2,10 @@ package com.mobile.location.server.bean.entry;
 
 import java.util.Date;
 
+import com.mobile.location.server.common.util.checker.IgnoreNull;
+
 public class LocationRecord {
+	@IgnoreNull
     private Integer locationRecordId;
 
     private String userInfoId;
@@ -21,10 +24,13 @@ public class LocationRecord {
 
     private String networkType;
 
+	@IgnoreNull
     private Boolean payment;
 
+	@IgnoreNull
     private Date createTime;
 
+	@IgnoreNull
     private Date updateTime;
 
     public Integer getLocationRecordId() {

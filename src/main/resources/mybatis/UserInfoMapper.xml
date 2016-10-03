@@ -196,4 +196,12 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where user_info_id = #{userInfoId,jdbcType=VARCHAR}
   </update>
+  
+  <select id="selectUserInfoByUserInfoId" resultMap="BaseResultMap" parameterType="java.lang.String">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from user_info 
+  	where 
+  		user_info_id = #{userInfoId}
+  </select>
 </mapper>
