@@ -166,4 +166,25 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where location_record_id = #{locationRecordId,jdbcType=INTEGER}
   </update>
+  <select id="selectUnclaimedCountByUserInfoIdAndEndTime" resultType="java.lang.Integer">
+  	select 
+    count(1)
+    from location_record
+    where 
+    	user_info_id = #{userInfoId}
+    and 
+    	create_time &lt;= #{endTime}
+    and 
+    	payment = 0
+  </select>
+  <update id="updateUnclaimedCountByUserInfoIdAndEndTime">
+  	update location_record
+  	set payment = 1
+  	where 
+  		user_info_id = #{userInfoId}
+  	and 
+  		create_time &lt;= #{endTime}
+  	and 
+  		payment = 0
+  </update>
 </mapper>

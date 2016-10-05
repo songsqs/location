@@ -1,5 +1,7 @@
 package com.mobile.location.server.service.location;
 
+import java.math.BigDecimal;
+
 import com.mobile.location.server.bean.entry.LocationRecord;
 
 public interface LocationService {
@@ -16,5 +18,23 @@ public interface LocationService {
 	 * @param locationRecord
 	 */
 	public void record(LocationRecord locationRecord);
+
+	/**
+	 * 根据用户id和结束时间获取红包数量
+	 * 
+	 * @param userInfoId
+	 * @param endTime
+	 * @return
+	 */
+	public BigDecimal getRewardByUserInfoIdAndEndTime(String userInfoId, String endTime);
+
+	/**
+	 * 根据用户id和结束时间给客户发红包
+	 * 
+	 * @param userInfoId
+	 * @param endTime
+	 * @return
+	 */
+	public BigDecimal payRewardByUserInfoIdAndEndTime(String userInfoId, String endTime);
 
 }

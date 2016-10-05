@@ -1,5 +1,6 @@
 package com.mobile.location.server.service.location;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class LocationServiceImpl implements LocationService {
 
 	@Autowired
 	private LocationRecordManager locationRecordManager;
+
+	@Autowired
+	private LocationConfig locationConfig;
 
 	@Override
 	public void record(LocationRecord locationRecord) {
@@ -45,5 +49,21 @@ public class LocationServiceImpl implements LocationService {
 		if (userInfo == null) {
 			throw new ProjectException(RES_STATUS.USER_INFO_NOT_EXIT);
 		}
+	}
+
+	@Override
+	public BigDecimal getRewardByUserInfoIdAndEndTime(String userInfoId, String endTime) {
+		BigDecimal rewardEachRedpacket = locationConfig.getReward();
+		int unclaimedCount = locationRecordManager.selectUnclaimedCountByUserInfoIdAndEndTime(userInfoId, endTime);
+		BigDecimal result = rewardEachRedpacket.multiply(new BigDecimal(unclaimedCount));
+		return result;
+	}
+
+	@Override
+	public BigDecimal payRewardByUserInfoIdAndEndTime(String userInfoId, String endTime) {
+		BigDecimal rewardEachRedpacket = locationConfig.getReward();
+		int updatedCount = locationRecordManager.updateUnclaimedCountByUserInfoIdAndEndTime(userInfoId, endTime);
+		BigDecimal result = rewardEachRedpacket.multiply(new BigDecimal(updatedCount));
+		return result;
 	}
 }

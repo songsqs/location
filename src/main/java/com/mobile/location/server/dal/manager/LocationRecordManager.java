@@ -29,4 +29,28 @@ public class LocationRecordManager {
 		}
 	}
 
+	public int selectUnclaimedCountByUserInfoIdAndEndTime(String userInfoId, String endTime) {
+		try {
+			int result = locationRecordMapper.selectUnclaimedCountByUserInfoIdAndEndTime(userInfoId, endTime);
+			logger.info("selectUnclaimedCountByUserInfoIdAndEndTime,userInfoId:" + userInfoId + ",endTime:" + endTime
+					+ ",result:" + result);
+			return result;
+		} catch (Exception e) {
+			logger.error("error when selectUnclaimedCountByUserInfoIdAndEndTime", e);
+			throw new ProjectException(RES_STATUS.SERVER_UNKONW_ERROR);
+		}
+	}
+
+	public int updateUnclaimedCountByUserInfoIdAndEndTime(String userInfoId, String endTime) {
+		try {
+			int result = locationRecordMapper.updateUnclaimedCountByUserInfoIdAndEndTime(userInfoId, endTime);
+			logger.info("updateUnclaimedCountByUserInfoIdAndEndTime,userInfoId:" + userInfoId + ",endTime:" + endTime
+					+ ",result:" + result);
+			return result;
+		} catch (Exception e) {
+			logger.error("error when updateUnclaimedCountByUserInfoIdAndEndTime", e);
+			throw new ProjectException(RES_STATUS.SERVER_UNKONW_ERROR);
+		}
+	}
+
 }

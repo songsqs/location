@@ -1,5 +1,7 @@
 package com.mobile.location.server.dal.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.mobile.location.server.bean.entry.LocationRecord;
 
 @MyBatisRepository
@@ -15,4 +17,10 @@ public interface LocationRecordMapper {
     int updateByPrimaryKeySelective(LocationRecord record);
 
     int updateByPrimaryKey(LocationRecord record);
+
+	int selectUnclaimedCountByUserInfoIdAndEndTime(@Param("userInfoId") String userInfoId,
+			@Param("endTime") String endTime);
+
+	int updateUnclaimedCountByUserInfoIdAndEndTime(@Param("userInfoId") String userInfoId,
+			@Param("endTime") String endTime);
 }
