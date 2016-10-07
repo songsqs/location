@@ -1,5 +1,7 @@
 package com.mobile.location.server.dal.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.mobile.location.server.bean.entry.LocationRecord;
@@ -23,4 +25,6 @@ public interface LocationRecordMapper {
 
 	int updateUnclaimedCountByUserInfoIdAndEndTime(@Param("userInfoId") String userInfoId,
 			@Param("endTime") String endTime);
+
+	int batchInsert(List<LocationRecord> locationRecordList);
 }

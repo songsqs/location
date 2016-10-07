@@ -2,6 +2,8 @@ package com.mobile.location.server.bean.entry;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.mobile.location.server.common.util.checker.IgnoreNull;
 
 public class LocationRecord {
@@ -26,8 +28,7 @@ public class LocationRecord {
 
 	@IgnoreNull
     private Boolean payment;
-
-	@IgnoreNull
+	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date createTime;
 
 	@IgnoreNull

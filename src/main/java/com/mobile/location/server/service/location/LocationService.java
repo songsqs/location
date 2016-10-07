@@ -20,6 +20,24 @@ public interface LocationService {
 	public void record(LocationRecord locationRecord);
 
 	/**
+	 * 批量插入信息<br>
+	 * 记录信息步骤如下: <br>
+	 * <ul>
+	 * <li>检查手机号是否存在</li>
+	 * <li>解析json</li>
+	 * <li>检查每条数据的完整性</li>
+	 * <li>批量插入</li>
+	 * </ul>
+	 * 
+	 * @param userInfoId
+	 *            用户id
+	 * @param recordArray
+	 *            信息数组,json格式
+	 * @return
+	 */
+	public int batchRecord(String userInfoId, String recordArray);
+
+	/**
 	 * 根据用户id和结束时间获取红包数量
 	 * 
 	 * @param userInfoId

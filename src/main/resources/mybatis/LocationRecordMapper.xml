@@ -27,7 +27,7 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from location_record
-    where location_record_id = #{locationRecordId,jdbcType=INTEGER}
+    where location_record_id = #{locationRecordId,jdbcType=INTEGER} 
   </delete>
   <insert id="insert" parameterType="com.mobile.location.server.bean.entry.LocationRecord" useGeneratedKeys="true" keyProperty="locationRecordId" >
     insert into location_record (user_info_id, longitude, latitude, 
@@ -187,4 +187,18 @@
   	and 
   		payment = 0
   </update>
+  <insert id="batchInsert"  parameterType="java.util.List">
+  	insert into location_record (user_info_id, longitude, latitude, 
+      lac, cid, bssid, phone_type, 
+      network_type, payment, create_time, 
+      update_time)
+    values
+    <foreach collection="list" item="item" index="index" separator="," >
+    	(#{item.userInfoId},#{item.longitude}, #{item.latitude}, 
+      		#{item.lac}, #{item.cid}, #{item.bssid}, #{item.phoneType}, 
+      		#{item.networkType}, #{item.payment}, #{item.createTime}, 
+      		#{item.updateTime})
+    </foreach>
+  	
+  </insert>
 </mapper>

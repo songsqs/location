@@ -1,5 +1,7 @@
 package com.mobile.location.server.dal.manager;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +51,17 @@ public class LocationRecordManager {
 			return result;
 		} catch (Exception e) {
 			logger.error("error when updateUnclaimedCountByUserInfoIdAndEndTime", e);
+			throw new ProjectException(RES_STATUS.SERVER_UNKONW_ERROR);
+		}
+	}
+
+	public int batchInsert(List<LocationRecord> locationRecordList) {
+		try {
+			int result = locationRecordMapper.batchInsert(locationRecordList);
+			logger.info("batch insert,size:" + locationRecordList.size() + ",result:" + result);
+			return result;
+		} catch (Exception e) {
+			logger.error("error when batch insert", e);
 			throw new ProjectException(RES_STATUS.SERVER_UNKONW_ERROR);
 		}
 	}
