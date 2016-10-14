@@ -327,7 +327,7 @@
 				<jdbc.url>jdbc:mysql://localhost:3306/location</jdbc.url>
 				<jdbc.user>root</jdbc.user>
 				<jdbc.password>root</jdbc.password>
-				<location.reward>0.01</location.reward>
+				<location.reward>0.0069</location.reward>
 			</properties>
 		</profile>
 		<profile>
