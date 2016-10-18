@@ -96,6 +96,7 @@ public class LocationServiceImpl implements LocationService {
 				locationRecord.setUserInfoId(userInfoId);
 				Checker.checkFieldsNotNull(locationRecord);
 				locationRecord.setUpdateTime(now);
+				locationRecord.setPayment(false);
 				locationRecordList.add(locationRecord);
 			} catch (Exception e) {
 				logger.error("error when pase object", e);
